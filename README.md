@@ -48,6 +48,17 @@ See [docs/DESIGN_NOTE.md](docs/DESIGN_NOTE.md) for the concise design note and
 [docs/EVALUATION_CASES.md](docs/EVALUATION_CASES.md) for ten representative
 non-demo evaluation cases.
 
+
+## Demo Video
+
+A recorded demonstration of the Corfu AI Assistant covering
+all five official DOTSOFT evaluation scenarios (A–E).
+
+**Duration:** Approximately 3 minutes
+
+[Watch the Demo Video (Google Drive)](https://drive.google.com/file/d/1d4_4-FN3V8Of2Kzah54SEWbLMJ3TtAg_/view?usp=sharing)
+
+
 ## Run with Docker Compose
 
 ### Prerequisites
