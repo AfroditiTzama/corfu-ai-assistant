@@ -1,0 +1,5 @@
+services:
+  backend:
+    environment:
+      CORFU_ENVIRONMENT: development
+      CORFU_WEATHER_FIXTURE_ENABLED: "true"

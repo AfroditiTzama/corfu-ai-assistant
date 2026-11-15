@@ -1,0 +1,40 @@
+.env
+.env.*
+!.env.example
+.envrc
+secrets/
+.secrets/
+*.secret
+credentials*.json
+service-account*.json
+*.pem
+*.key
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.cache/
+model-cache/
+huggingface/
+.huggingface/
+sentence-transformers/
+node_modules/
+dist/
+coverage/
+.npm/
+*.tsbuildinfo
+
+# macOS
+.DS_Store
+
+# Recruitment assignment
+DOTSOFT_Senior_LLM_Assignment.docx
+
+# Generated evaluation results
+evaluation/results/

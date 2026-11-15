@@ -1,0 +1,45 @@
+name: corfu-ai-assistant
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      CORFU_ENVIRONMENT: production
+      CORFU_DATASET_PATH: /app/corfu_dataset.json
+      CORFU_WEATHER_FIXTURE_PATH: /app/corfu_synthetic_rain.json
+      CORFU_EMBEDDING_CACHE_DIR: /model-cache/sentence-transformers
+      HF_HOME: /model-cache
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - huggingface-model-cache:/model-cache
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=4)"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8080:80"
+    restart: unless-stopped
+
+volumes:
+  huggingface-model-cache:

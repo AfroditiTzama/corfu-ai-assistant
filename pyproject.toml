@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "corfu-ai-assistant"
+version = "0.1.0"
+description = "Grounded conversational travel assistant and deterministic itinerary planner for Corfu"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "httpx>=0.27,<1",
+    "numpy>=1.26,<3",
+    "pydantic>=2.7,<3",
+    "pydantic-settings>=2.2,<3",
+    "uvicorn>=0.30,<1",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8,<9",
+]
+retrieval = [
+    "sentence-transformers>=3.0,<4",
+    "transformers>=4.41,<4.50",
+]
+llm = [
+    "langchain-google-genai>=4.0,<5",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+    "integration: requires a real embedding model and may download model files",
+]
