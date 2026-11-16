@@ -74,8 +74,7 @@ directions or accessibility guarantees.
 
 `ConversationStateManager` stores typed, session-scoped state in memory. Intent
 updates are patches: relevant date/window, preferences, filters, child context,
-and unaffected itinerary stops are preserved unless explicitly changed or
-cleared. Failed workflows roll back only when their state snapshot is still
+and unaffected itinerary stops are preserved where feasible and compatible with the updated constraints.. Failed workflows roll back only when their state snapshot is still
 current. Planned itineraries use optimistic commits that compare the complete
 expected state and pending modification; a genuine concurrent update is
 reported instead of overwritten. Request IDs provide process-local idempotency.
@@ -83,10 +82,7 @@ One Uvicorn worker is intentional because state is not shared or durable.
 
 ## Weather
 
-Production/default configuration constructs `OpenMeteoWeatherProvider` for the
-configured Corfu coordinates and Europe/Athens timezone. It validates response
-shape, bounds forecast windows, and uses bounded transport retries. Live results
-retain source and retrieval time.
+By default, the application uses OpenMeteoWeatherProvider with the configured Corfu coordinates and Europe/Athens timezone. It validates response shape, bounds forecast windows, and uses bounded transport retries. Live results retain source and retrieval time.
 
 For the dated rain demonstration, a development-only Compose override selects
 the existing `FixtureWeatherProvider`. Synthetic results retain
