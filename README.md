@@ -1,4 +1,4 @@
-# Corfu AI Tourist Assistant
+# Corfu AI Assistant
 
 A local prototype for grounded Corfu place discovery, conversational itinerary planning, deterministic itinerary validation, and weather-aware replanning. The application consists of a FastAPI backend and a React frontend. It is not a publicly hosted or production-hardened travel service.
 
@@ -128,7 +128,8 @@ Through the frontend reverse proxy, the same request is available at `http://loc
 
 The evaluation commands in this section and the next require a local Python environment with the project dependencies installed; see [Local development without Docker](#local-development-without-docker). Their JSON outputs are written under `evaluation/results/`, which is excluded from version control.
 
-The labeled benchmark in `evaluation/retrieval_benchmark.json` contains 68 human-authored queries with dataset-grounded relevance grades, hard constraints, and explicit multi-turn examples. Labels were authored from the supplied POI records, not copied from the assistant's search results. The runner reports pure retrieval ranking metrics separately from recommendation-count simulation; it does not call Gemini or measure final generated-answer quality.
+
+The labeled benchmark in `evaluation/retrieval_benchmark.json` contains 68 evaluation queries with dataset-grounded relevance grades, hard constraints, and multi-turn examples. Labels were authored from the supplied POI records, not copied from the assistant's search results. The runner reports pure retrieval ranking metrics separately from recommendation-count simulation; it does not call Gemini or measure final generated-answer quality.
 
 Run the evaluation on CPU with:
 
